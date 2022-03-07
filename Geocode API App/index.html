@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoCode Api</title>
+    <style>
+        #map{
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>MY GOOGLE MAP</h1>
+    <div id="map">
+
+    </div>
+   <script>
+       function initMap()
+       {
+          var options = 
+           {
+             zoom: 8,
+             center:{lat:28.6139, lng:77.2090}
+
+           }
+
+          var map = new google.maps.Map(document.getElementById('map'),options);
+
+           var marker = new googe.maps.Marker({
+               
+               posiition: {lat:28.6139, lng:77.2090},
+               map:map,
+               icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+               
+           });
+           marker.setMap(map);
+
+           var infoWindow = new google.maps.InfoWindow({
+               content: '<h1> Delhi DEL</h1>'
+           });
+
+           marker.addListener('click',function()
+           {
+               infoWindow.open(map,marker);
+       });
+   </script>
+    <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1rcxhz-Xdhg1YX2h5D0aPj8HswYfUll8&callback=initMap">
+</script>
+      
+</body>
+</html>
